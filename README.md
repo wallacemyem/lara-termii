@@ -1,5 +1,5 @@
 <p align="center">
-    <img title="Termii" src="https://termii.com/assets/images/logo.png"/>
+    <img title="Termii" src="https://termii.com/_nuxt/logo.5cb3359c.svg"/>
 </p>
 
 ## Termii Laravel Package
