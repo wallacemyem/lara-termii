@@ -118,7 +118,8 @@ public function someMethod(LaraTermii $termii)
 
 ### Security
 
-If you discover any security related issues, please email adamsohiani@gmail.com instead of using the issue tracker.
+If you discover any security related issues, please email wallacemyem@hotmail.com instead of using the issue tracker.
+This is a fork from https://github.com/zeevx/lara-termii and I have added more fixes to make it work.
 
 ## Credits
 
