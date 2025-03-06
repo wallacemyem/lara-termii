@@ -2,6 +2,8 @@
 
 namespace Wallacemyem\LaraTermii;
 
+use Illuminate\Http\Client\Response;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Http;
 
 class LaraTermii
@@ -26,7 +28,7 @@ class LaraTermii
     }
 
 
-    private function checkStatus(int $status): \Illuminate\Http\JsonResponse
+    private function checkStatus(int $status): JsonResponse
     {
         if ($status) {
             if ($status === 200)
@@ -169,19 +171,24 @@ class LaraTermii
 	* Description: Submit Sender ID.
 	* params: sender_id, use_case, company.
 	*/
-    public function submitSenderId(string $sender_id, string $use_case, string $company): string
-    {
-        $request = Http::post($this->base("sender-id/request"), [
+    public function submitSenderId(
+        string $sender_id,
+        string $use_case,
+        string $company
+    ): Response|string {
+        $response = Http::post($this->base("sender-id/request"), [
             "api_key" => $this->key,
             "sender_id" => $sender_id,
             "usecase" => $use_case,
             "company" => $company
         ]);
-        $status = $request->status();
-        if (json_decode($this->checkStatus($status)->content())->success || $status === 404) {
-            return $request->getBody()->getContents();
-        }
-        return $this->checkStatus($status)->content();
+
+        $status = $response->status();
+        return match (true) {
+            json_decode($this->checkStatus($status)->content())->success,
+            $status === 404 => $response->body(),
+            default => $this->checkStatus($status)->content()
+        };
     }
 
 
@@ -191,43 +198,40 @@ class LaraTermii
 	* Description: Send Message.
 	* params: to, from, sms, channel, media, media_url, media_caption.
 	*/
-    public function sendMessage(int $to, string $from, string $sms, string $channel = "generic", bool $media = false, string $media_url = null, string $media_caption = null): string
-    {
-        $type = "plain";
-
-        if ($media == true && $channel == "whatsapp") {
-            $channel = "whatsapp";
-
-            $data = [
-                "api_key" => $this->key,
-                "to" => $to,
-                "from" => $from,
-                "type" => $type,
-                "channel" => $channel,
-                "media" => json_encode([
-                    "media.url" => $media_url,
-                    "media.caption" => $media_caption
-                ])
-            ];
-        }
-
+    public function sendMessage(
+        int $to,
+        string $from,
+        string $sms,
+        string $channel = "generic",
+        bool $media = false,
+        ?string $media_url = null,
+        ?string $media_caption = null
+    ): Response|string {
         $data = [
             "api_key" => $this->key,
             "to" => $to,
             "from" => $from,
-            "sms" => $sms,
-            "type" => $type,
-            "channel" => $channel
+            "type" => "plain",
+            "channel" => $channel,
+            "sms" => $sms
         ];
 
-        $request = Http::post($this->base("sms/send"), $data);
-        $status = $request->status();
-        //There is a fix here
-        //TODO: Fix
-        if (json_decode($this->checkStatus($status)->content())->success || $status === 400) {
-            return $request->getBody()->getContents();
+        if ($media && $channel === "whatsapp") {
+            $data["media"] = json_encode([
+                "media.url" => $media_url,
+                "media.caption" => $media_caption
+            ]);
+            unset($data["sms"]);
         }
-        return $this->checkStatus($status)->content();
+
+        $response = Http::post($this->base("sms/send"), $data);
+        $status = $response->status();
+
+        return match (true) {
+            json_decode($this->checkStatus($status)->content())->success,
+            $status === 400 => $response->body(),
+            default => $this->checkStatus($status)->content()
+        };
     }
 
 
