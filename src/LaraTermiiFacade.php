@@ -1,11 +1,11 @@
 <?php
 
-namespace Zeevx\LaraTermii;
+namespace Wallacemyem\LaraTermii;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Zeevx\LaraTermii\Skeleton\SkeletonClass
+ * @see \Wallacemyem\LaraTermii\Skeleton\SkeletonClass
  */
 class LaraTermiiFacade extends Facade
 {

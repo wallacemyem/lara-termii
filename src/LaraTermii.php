@@ -1,6 +1,6 @@
 <?php
 
-namespace Zeevx\LaraTermii;
+namespace Wallacemyem\LaraTermii;
 
 use Illuminate\Support\Facades\Http;
 
@@ -326,7 +326,6 @@ class LaraTermii
             return $request->getBody()->getContents();
         }
         return $this->checkStatus($status)->content();
-
     }
 
     /*
@@ -354,6 +353,4 @@ class LaraTermii
         }
         return $this->checkStatus($status)->content();
     }
-
-
 }

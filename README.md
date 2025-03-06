@@ -5,7 +5,7 @@
 ## Termii Laravel Package
 Lara-Termii helps you Set up, test, and manage your Termii integration directly in your Laravel App.
 
-[![Total Downloads](https://img.shields.io/packagist/dt/zeevx/lara-termii.svg?style=flat-square)](https://packagist.org/packages/zeevx/lara-termii)
+[![Total Downloads](https://img.shields.io/packagist/dt/Wallacemyem/lara-termii.svg?style=flat-square)](https://packagist.org/packages/Wallacemyem/lara-termii)
 
 
 ## Installation
@@ -13,14 +13,14 @@ Lara-Termii helps you Set up, test, and manage your Termii integration directly 
 You can install the package via composer:
 
 ```bash
-composer require zeevx/lara-termii
+composer require Wallacemyem/lara-termii
 ```
 
 
 ## Usage:
 
 ### Declare Instance of Class
-- Example `$termii = new \Zeevx\LaraTermii\LaraTermii("YOUR-TERMII-API-KEY");`
+- Example `$termii = new \Wallacemyem\LaraTermii\LaraTermii("YOUR-TERMII-API-KEY");`
 
 ###  Check your balance on Termii
 - You can check your termii balance.
@@ -77,7 +77,7 @@ If you discover any security related issues, please email adamsohiani@gmail.com 
 
 ## Credits
 
--   [Paul Adams](https://github.com/zeevx)
+-   [Paul Adams](https://github.com/Wallacemyem)
 -   [All Contributors](../../contributors)
 
 ## License

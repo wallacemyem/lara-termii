@@ -1,6 +1,6 @@
 <?php
 
-namespace Zeevx\LaraTermii;
+namespace Wallacemyem\LaraTermii;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -9,10 +9,7 @@ class LaraTermiiServiceProvider extends ServiceProvider
     /**
      * Bootstrap the application services.
      */
-    public function boot()
-    {
-
-    }
+    public function boot() {}
 
     /**
      * Register the application services.

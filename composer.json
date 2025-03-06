@@ -30,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Zeevx\\LaraTermii\\": "src"
+            "Wallacemyem\\LaraTermii\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Zeevx\\LaraTermii\\Tests\\": "tests"
+            "Wallacemyem\\LaraTermii\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -45,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Zeevx\\LaraTermii\\LaraTermiiServiceProvider"
+                "Wallacemyem\\LaraTermii\\LaraTermiiServiceProvider"
             ],
             "aliases": {
-                "LaraTermii": "Zeevx\\LaraTermii\\LaraTermiiFacade"
+                "LaraTermii": "Wallacemyem\\LaraTermii\\LaraTermiiFacade"
             }
         }
     },
