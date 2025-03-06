@@ -1,5 +1,6 @@
 {
     "name": "wallacemyem/lara-termii",
+    "version": "1.0.0",
     "description": "A Laravel Package for Termii - https://www.termii.com",
     "keywords": [
         "wallacemyem",
@@ -57,5 +58,7 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
