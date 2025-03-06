@@ -30,7 +30,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Wallacemyem\\LaraTermii\\": "src"
+            "Wallacemyem\\LaraTermii\\": "src/"
         }
     },
     "autoload-dev": {
@@ -48,7 +48,7 @@
                 "Wallacemyem\\LaraTermii\\LaraTermiiServiceProvider"
             ],
             "aliases": {
-                "LaraTermii": "Wallacemyem\\LaraTermii\\LaraTermiiFacade"
+                "LaraTermii": "Wallacemyem\\LaraTermii\\Facades\\LaraTermii"
             }
         }
     },

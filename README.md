@@ -16,13 +16,54 @@ You can install the package via composer:
 composer require Wallacemyem/lara-termii
 ```
 
+## Configuration
 
-## Usage:
+1. Add the service provider to `config/app.php` (Laravel will auto-discover it in most cases):
 
-### Declare Instance of Class
-- Example `$termii = new \Wallacemyem\LaraTermii\LaraTermii("YOUR-TERMII-API-KEY");`
+```php
+'providers' => [
+    // ...
+    Wallacemyem\LaraTermii\LaraTermiiServiceProvider::class,
+],
 
-###  Check your balance on Termii
+'aliases' => [
+    // ...
+    'LaraTermii' => Wallacemyem\LaraTermii\Facades\LaraTermii::class,
+],
+```
+
+2. Publish the configuration file:
+
+```bash
+php artisan vendor:publish --provider="Wallacemyem\LaraTermii\LaraTermiiServiceProvider"
+```
+
+3. Add your Termii API key to your `.env` file:
+
+```env
+TERMII_API_KEY=your-api-key-here
+```
+
+## Usage
+
+You can use the facade or dependency injection:
+
+```php
+// Using facade
+use Wallacemyem\LaraTermii\Facades\LaraTermii;
+
+LaraTermii::balance();
+
+// Using dependency injection
+use Wallacemyem\LaraTermii\LaraTermii;
+
+public function someMethod(LaraTermii $termii)
+{
+    $balance = $termii->balance();
+}
+```
+
+### Check your balance on Termii
 - You can check your termii balance.
 - Run `$termii->balance()`
 
@@ -32,19 +73,19 @@ composer require Wallacemyem/lara-termii
 
 ### Detect if a number is fake or has ported to a new network
 - You can check if a number is fake or has ported to a new network.
-- Run `$termii->status(int $phone_number, string $country_code) ` and pass appropriate params
+- Run `$termii->numberStatus($phone_number, $country_code)` and pass appropriate params
 
 ### Verify phone numbers and automatically detect their status
 - You can verify phone numbers and automatically detect their status.
-- Run `$termii->search(int $phone_number) ` and pass appropriate params
+- Run `$termii->searchNumber($phone_number)` and pass appropriate params
 
 ### Retrieve the status of all registered sender ID
-- You can retrieve the status of all registered sender ID.
-- Run `$termii->allSenderId()`
+- You can retrieve the status of all registered sender IDs.
+- Run `$termii->getSenderIds()`
 
 ### Request a new sender ID
 - You can request a new sender ID.
-- Run `$termii->submitSenderId(string $sender_id, string $use_case, string $company)` and pass appropriate params
+- Run `$termii->requestSenderId($sender_id, $usecase, $company)` and pass appropriate params
 
 ### Send Message
 - You can a message.
@@ -70,6 +111,10 @@ composer require Wallacemyem/lara-termii
 - You can send In-App OTP
 - Run `$termii->sendInAppOTP(int $to, int $pin_attempts, int $pin_time_to_live, int $pin_length, string $pin_type)` and pass appropriate params
 
+### Sotel eSIMs API
+- Coming soon
+
+
 
 ### Security
 
@@ -77,7 +122,7 @@ If you discover any security related issues, please email adamsohiani@gmail.com 
 
 ## Credits
 
--   [Paul Adams](https://github.com/Wallacemyem)
+-   [Wallace Aboiyar](https://github.com/Wallacemyem)
 -   [All Contributors](../../contributors)
 
 ## License
