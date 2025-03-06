@@ -1,30 +1,32 @@
 {
-    "name": "zeevx/lara-termii",
+    "name": "wallacemyem/lara-termii",
     "description": "A Laravel Package for Termii - https://www.termii.com",
     "keywords": [
-        "zeevx",
+        "wallacemyem",
         "lara-termii"
     ],
-    "homepage": "https://github.com/zeevx/lara-termii",
+    "homepage": "https://github.com/wallacemyem/lara-termii",
     "license": "MIT",
     "type": "library",
     "authors": [
         {
-            "name": "Paul Adams",
-            "email": "adamsohiani@gmail.com",
+            "name": "Wallace Aboiyar",
+            "email": "wallacemyem@hotmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.4|^8.0",
-        "illuminate/support": "~6|~7|~8|~9",
-        "ext-json": "*"
+        "php": "^8.2",
+        "illuminate/support": "^9.0|^10.0",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.7"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.0",
-        "phpunit/phpunit": "^8.4|^9.0",
-        "pestphp/pest": "^1.23",
-        "pestphp/pest-plugin-laravel": "^1.4"
+        "orchestra/testbench": "^8.0",
+        "phpunit/phpunit": "^10.0",
+        "pestphp/pest": "^2.8",
+        "pestphp/pest-plugin-laravel": "^2.0",
+        "laravel/pint": "^1.10"
     },
     "autoload": {
         "psr-4": {
@@ -39,7 +41,6 @@
     "scripts": {
         "test": "vendor/bin/phpunit",
         "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
     },
     "extra": {
         "laravel": {
@@ -52,8 +53,11 @@
         }
     },
     "config": {
+        "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true
         }
-    }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
