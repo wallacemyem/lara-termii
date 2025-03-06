@@ -5,7 +5,7 @@
         "wallacemyem",
         "lara-termii"
     ],
-    "homepage": "https://github.com/wallacemyem/lara-termii",
+    "homepage": "https://github.com/wallacemyem/termii-laravel",
     "license": "MIT",
     "type": "library",
     "authors": [
@@ -58,6 +58,6 @@
             "pestphp/pest-plugin": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
